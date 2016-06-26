@@ -1,3 +1,5 @@
+#!/bin/bash
+
 device_file=$1
 
 if [ `whoami` != "root" ]; then
@@ -10,8 +12,8 @@ if [ -z $device_file ]; then
 	exit;
 fi
 
-if [ `file $device_file | grep "block special" | wc -l` -ne "1" ]; then
-	echo Not a block device. Exiting.
+if [ ! -b $device_file ]; then
+	echo Specified file is not a block device. Exiting.
 	exit;
 fi
 

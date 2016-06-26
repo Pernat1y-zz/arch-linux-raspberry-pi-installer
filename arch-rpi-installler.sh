@@ -23,7 +23,7 @@ for part in $(ls $device_file*); do
 done
 
 echo Creating new partitions
-echo -e "o\nn\np\n1\n\n+100M\nt\nc\nn\np\n2\n\n\nw" | fdisk $device_file
+echo -e "o\nn\np\n1\n\n+100M\nt\nc\nn\np\n2\n\n\nw" | fdisk $device_file # scary part
 
 echo Creating and mounting new FSes
 mkfs.vfat $device_file"1"

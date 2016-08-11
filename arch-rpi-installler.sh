@@ -38,6 +38,7 @@ mount $device_file"1" boot
 
 if [ $? -ne "0" ]; then
 	echo "Error mounting boot FS. Exiting."
+	echo "Check if mkfs.vfat (dosfstools) installed"
 	exit;
 fi
 
@@ -47,6 +48,7 @@ mount $device_file"2" root
 
 if [ $? -ne "0" ]; then
         echo "Error mounting root FS. Exiting."
+        echo "Check if mkfs.vfat (dosfstools) installed"
         exit;
 fi
 

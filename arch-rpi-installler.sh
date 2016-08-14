@@ -52,9 +52,14 @@ if [ $? -ne "0" ]; then
         exit;
 fi
 
-
 echo "Downloading Arch image."
-wget -c http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz
+wget --quiet --continue --show-progress http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz
+
+if [ $? -ne "0" ]; then
+        echo "Error downloading image. Exiting: $?"
+        echo "Check internet connection, permissions and free space."
+        exit;
+fi
 
 echo "Writing Arch image."
 bsdtar -xpf ArchLinuxARM-rpi-2-latest.tar.gz -C root

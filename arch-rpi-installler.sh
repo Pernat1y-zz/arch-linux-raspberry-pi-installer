@@ -7,6 +7,12 @@ if [ `whoami` != "root" ]; then
 	exit;
 fi
 
+which wget mkfs.vfat >/dev/null 2>/dev/null
+if [ `$?` != "0" ]; then
+        echo "I need wget and mkfs.vfat (dosfstools) to work. Exiting."
+        exit;
+fi
+
 if [ -z $device_file ]; then
 	echo "Usage: $0 /dev/sdX"
 	exit;

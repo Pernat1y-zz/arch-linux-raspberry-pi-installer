@@ -8,7 +8,7 @@ if [ `whoami` != "root" ]; then
 fi
 
 which wget mkfs.vfat >/dev/null 2>/dev/null
-if [ `$?` != "0" ]; then
+if [ $? != "0" ]; then
         echo "I need wget and mkfs.vfat (dosfstools) to work. Exiting."
         exit;
 fi
@@ -25,7 +25,7 @@ fi
 
 for part in $(ls $device_file*); do
 	echo "Unmounting partition $part"
-	umount $part
+	umount $part 2>/dev/null
 done
 
 echo "WARNING!"
